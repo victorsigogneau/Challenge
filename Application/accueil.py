@@ -9,9 +9,9 @@ st.title("Bienvenue sur notre app !")
 
 # Description de l'application
 st.write("""
-        Préparez vos oreilles et ajustez vos enceintes, car notre projet va révolutionner votre playlist comme jamais auparavant! Oubliez le casse-tête de chercher la prochaine perle rare. 
+        Préparez vos oreilles et ajustez vos enceintes, car notre projet va révolutionner votre playlist comme jamais auparavant ! Oubliez le casse-tête de chercher la prochaine perle rare. 
 
-Alors, êtes-vous prêts à laisser un algorithme décider de vos futurs coups de cœur musicaux ? Attention, risque élevé de devenir accro! 😊 
+Alors, êtes-vous prêts à laisser un algorithme décider de vos futurs coups de cœur musicaux ? Attention, risque élevé de devenir accro ! 😊 
             """)
 
 
