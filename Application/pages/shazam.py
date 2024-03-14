@@ -186,48 +186,16 @@ if uploaded_file is not None:
         titre = music_json['track']['title']
         artiste = music_json['track']['subtitle']
 
-        # Key de Spotify
-        client_id = 'b6d0752f35624904aa09b8ab4c06d5b1'
-        client_secret = 'debdca7f8ec94ebf922263bfa071db9d'
 
-        # Initialiser le gestionnaire de credentials client
-        client_credentials_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret)
+        # Création du dictionnaire avec les données
+        donnees = {
+            "artistes_preferes": [artiste],
+            "titres_preferes": [titre]
+        }
 
-        # Créer une instance Spotify
-        sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
-
-        # Recherchez une piste
-        track_results = sp.search(q=f'track:{titre} artist:{artiste}', type='track', limit=1)
-
-        # Obtenir l'ID de la piste
-        track_id = track_results['tracks']['items'][0]['id']
-
-        #st.write(f"Artiste: {track_id}")
-
-        # Obtenir les détails de la piste, y compris les genres associés
-        track_details = sp.track(track_id)
-
-        # Obtenir les artistes associés à la piste
-        artist_ids = [artist['id'] for artist in track_details['artists']]
-
-        # Obtenir les détails des artistes
-        artists_details = sp.artists(artist_ids)
-
-        liste_genre = []
-        artist_genres = {}
-
-        # Récupérer les genres associés à chaque artiste
-        for artist in artists_details['artists']:
-            print(f"Genres de l'artiste {artist['name']}: {', '.join(artist['genres'])}")
-            liste_genre.append(artist['genres'])
-
-            # Construction du dictionnaire
-            artist_genres[artist['name'].lower()] = artist['genres']
-            
-        # Conversion du dictionnaire en JSON string
-        artist_genres_json = json.dumps(artist_genres, indent=4)
-
-        st.write(artist_genres_json)
+        # Enregistrement dans un fichier JSON
+        with open('data.json', 'w', encoding='utf-8') as fichier:
+            json.dump(donnees, fichier, ensure_ascii=False, indent=4)
 
 
         ##########
@@ -274,6 +242,8 @@ if uploaded_file is not None:
         ######
         # fin victor
         ####
+            
+        #st.write(recommandationn)
 
 
     except StopIteration:
