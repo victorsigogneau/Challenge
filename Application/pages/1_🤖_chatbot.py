@@ -265,7 +265,7 @@ if prompt := st.chat_input():
     if response =='Vous pouvez observer les resultats dans un autre onglet':
         json_data = chatbot.get_json_clean()
         with open("./data.json", "w") as json_file:
-            json.dump(json_data, json_file)
+            json.dump(json_data, json_file, ensure_ascii=False)
         
         # Exemple d'utilisation
         fichier1 = "data_brute.json"
@@ -281,7 +281,7 @@ if prompt := st.chat_input():
 
         #sauvegarder json
         with open("json_a_traiter.json", 'w') as f:
-            json.dump(json_a_traiter, f)
+            json.dump(json_a_traiter, f, ensure_ascii=False)
         
         recommandationn ={'artiste_aime':[],'recommandation':[]}
 
@@ -302,7 +302,7 @@ if prompt := st.chat_input():
             recommandationn['artiste_aime'].append(artiste_aime)
             recommandationn['recommandation'].append(recommandation)
         with open("recommandation.json", "w") as fichier_json:
-            json.dump(recommandationn, fichier_json)
+            json.dump(recommandationn, fichier_json, ensure_ascii=False)
 
 
 st.markdown(
