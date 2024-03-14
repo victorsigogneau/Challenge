@@ -8,6 +8,13 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from collections import defaultdict
 import requests
+from streamlit_extras.switch_page_button import switch_page
+
+# Configuration de la page
+st.set_page_config(page_title="Similarité", initial_sidebar_state="collapsed")
+
+if st.button("Accueil"):
+    switch_page("accueil")
 
 # Charger le fichier recommandation.json
 with open('./recommandation.json', 'r') as file:
@@ -82,3 +89,15 @@ for song_info, similar_songs in top_similar_songs.items():
     for similar_song_info in similar_songs:
         similar_song_name, similar_artist_name = similar_song_info
         st.write(f"- Chanson similaire : {similar_song_name} (Artiste : {similar_artist_name})")
+
+
+st.markdown(
+    """
+<style>
+    [data-testid="collapsedControl"] {
+        display: none
+    }
+</style>
+""",
+    unsafe_allow_html=True,
+)
