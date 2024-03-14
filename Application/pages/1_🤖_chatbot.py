@@ -1,3 +1,5 @@
+import streamlit as st
+
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 from langchain.llms import HuggingFaceHub
@@ -82,6 +84,13 @@ class Chatbot():
 
 import streamlit as st
 from chatbotte import Chatbot  # Supposons que votre classe Chatbot est dans un fichier chatbot.py
+from streamlit_extras.switch_page_button import switch_page
+
+# Configuration de la page
+st.set_page_config(page_title="chatbot", initial_sidebar_state="collapsed")
+
+if st.button("Accueil"):
+    switch_page("accueil")
 
 huggingfacehub_api_token = "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"
 
@@ -111,4 +120,13 @@ if prompt := st.chat_input():
         with open("./data.json", "w") as json_file:
             json.dump(json_data, json_file)
 
-
+st.markdown(
+        """
+    <style>
+        [data-testid="collapsedControl"] {
+            display: none
+        }
+    </style>
+    """,
+        unsafe_allow_html=True,
+    )
