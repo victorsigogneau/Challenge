@@ -14,13 +14,58 @@ st.write("""
 Alors, êtes-vous prêts à laisser un algorithme décider de vos futurs coups de cœur musicaux ? Attention, risque élevé de devenir accro! 😊 
             """)
 
+
+st.markdown('''
+&nbsp;
+''', unsafe_allow_html=True)
+
+
+# Create two columns with equal width
+col1, col2 = st.columns(2)
+
+
+from PIL import Image
+hauteur_cible1 = 123
+hauteur_cible2 = 100
+
+
+############## COL1
 # Boutons pour naviguer vers d'autres pages
-st.write("🤖 Besoin d'un ami virtuel ? Cliquez ici ! ")
-if st.button("Chatbot"):
+col1.write("🤖 Besoin d'un ami virtuel ? Cliquez ici ! ")
+
+# Charger l'image avec PIL
+image1 = Image.open("chatbot.jpeg")
+
+# Calculer le nouveau rapport de hauteur tout en conservant le rapport aspect
+rapport1 = hauteur_cible1 / image1.height
+largeur_cible1 = int(image1.width * rapport1)
+
+# Redimensionner l'image
+image_redimensionnee1 = image1.resize((largeur_cible1, hauteur_cible1))
+
+# Afficher l'image redimensionnée
+col1.image(image_redimensionnee1)
+if col1.button("Chatbot"):
     switch_page("chatbot")
 
-st.write("♫ Envie de swinguer ? Téléchargez vos rythmes préférés !")
-if st.button("Shazam"):
+
+    
+############## COL2
+col2.write("♫ Envie de swinguer ? Téléchargez vos rythmes préférés !")
+
+# Charger l'image avec PIL
+image2 = Image.open("shazam.png")
+
+# Calculer le nouveau rapport de hauteur tout en conservant le rapport aspect
+rapport2 = hauteur_cible2 / image2.height
+largeur_cible2 = int(image2.width * rapport2)
+
+# Redimensionner l'image
+image_redimensionnee2 = image2.resize((largeur_cible2, hauteur_cible2))
+
+# Afficher l'image redimensionnée
+col2.image(image_redimensionnee2)
+if col2.button("Shazam"):
     switch_page("shazam")
 
 
