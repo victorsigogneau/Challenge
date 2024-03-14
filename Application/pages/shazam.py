@@ -154,12 +154,14 @@ def get_artist_genres(artist_name):
         return None
     
 
+passer=False
 
 # Configuration de la page
 st.set_page_config(page_title="shazam", initial_sidebar_state="collapsed")
 
 if st.button("Accueil"):
     switch_page("accueil")
+
 
 st.title("Reconnaissance de musique")
 
@@ -202,6 +204,7 @@ if uploaded_file is not None:
         ## PARTIE VICTOR
         #########
 
+        passer=True
         # Exemple d'utilisation
         fichier1 = "data_brute.json"
         fichier2 = "data.json"
@@ -251,6 +254,9 @@ if uploaded_file is not None:
         st.error("Aucune correspondance trouvée pour ce fichier audio.")
 
 
+if st.button('Recommandation') and passer ==True:
+    switch_page("recommandation")
+
 st.markdown(
     """
 <style>
@@ -261,3 +267,5 @@ st.markdown(
 """,
     unsafe_allow_html=True,
 )
+
+

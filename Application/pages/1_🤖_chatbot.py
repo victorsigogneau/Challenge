@@ -25,15 +25,21 @@ class Chatbot():
 
     # Prompt de base
     def make_prompt(self):
-        prompt_template = """
+        prompt_template = """[INST]
         Voici un json je souhaite que tu me retourne uniquement le json
         Réorganise les valeurs des clés, sépare les quand il y a des virgules
         Le JSON doit être sur une seule ligne
         
+        JSON1: 
+        {"artistes_preferes": "Mozart, Shakira, DJ SNAKE", "titres_preferes": "rzerze et dazdazd"}
+        JSON2: 
+        {"artistes_preferes": ["Mozart", "Shakira", "DJ SNAKE"], "titres_preferes": ["rzerze", "dazdazd]"}
 
+
+        JSON 1
         {query}
-
-        Réponse:
+        [/INST]
+        JSON2:
         """
 
         return prompt_template
@@ -233,6 +239,7 @@ import streamlit as st
 from chatbotte import Chatbot  # Supposons que votre classe Chatbot est dans un fichier chatbot.py
 from streamlit_extras.switch_page_button import switch_page
 
+passer= False
 # Configuration de la page
 st.set_page_config(page_title="chatbot", initial_sidebar_state="collapsed")
 
@@ -272,6 +279,7 @@ if prompt := st.chat_input():
         fichier2 = "data.json"
         json_a_traiter = fusionner_json(fichier1, fichier2)
         
+        passer =True
         pd.set_option('display.max_columns', None)
         client_id = 'b6d0752f35624904aa09b8ab4c06d5b1'
         client_secret = 'debdca7f8ec94ebf922263bfa071db9d'
@@ -303,6 +311,9 @@ if prompt := st.chat_input():
             recommandationn['recommandation'].append(recommandation)
         with open("recommandation.json", "w") as fichier_json:
             json.dump(recommandationn, fichier_json, ensure_ascii=False)
+        
+        switch_page("recommandation")
+
 
 
 st.markdown(
