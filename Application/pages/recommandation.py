@@ -2,13 +2,15 @@ import streamlit as st
 import json
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
-
+from streamlit_extras.switch_page_button import switch_page
 # Initialisation de l'API Spotify
+
 # Initialisation de l'API Spotify
 client_credentials_manager = SpotifyClientCredentials(client_id='b6d0752f35624904aa09b8ab4c06d5b1', client_secret='debdca7f8ec94ebf922263bfa071db9d')
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
-
+if st.button("Voir les sons recommendés"):
+    switch_page("Similarité")
 
 # Charger les données JSON
 with open('recommandation.json', 'r') as file:
