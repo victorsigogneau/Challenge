@@ -167,7 +167,7 @@ st.title("Reconnaissance de musique")
 
 # Description de l'application
 st.write("""
-            La magie de reconnaître n'importe quelle chanson en quelques secondes et vous faire les meilleurs recommendations !
+            La magie de reconnaître n'importe quelle chanson en quelques secondes et vous faire les meilleurs recommandations !
             """)
 
 # Créer un bouton de chargement de fichier dans l'interface utilisateur
