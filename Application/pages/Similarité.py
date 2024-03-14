@@ -10,7 +10,7 @@ from collections import defaultdict
 import requests
 
 # Charger le fichier recommandation.json
-with open('C:/Users/ndieng1/Documents/Challenge-IA/Challenge-main/Application/recommandation.json', 'r') as file:
+with open('./recommandation.json', 'r') as file:
     recommendation_data = json.load(file)
 
 # Initialiser l'API Spotify
