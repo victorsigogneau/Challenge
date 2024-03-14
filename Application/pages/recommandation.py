@@ -9,7 +9,13 @@ from streamlit_extras.switch_page_button import switch_page
 client_credentials_manager = SpotifyClientCredentials(client_id='b6d0752f35624904aa09b8ab4c06d5b1', client_secret='debdca7f8ec94ebf922263bfa071db9d')
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
-if st.button("Voir les sons recommendés"):
+# Configuration de la page
+st.set_page_config(page_title="shazam", initial_sidebar_state="collapsed")
+
+if st.button("Accueil"):
+    switch_page("accueil")
+
+if st.button("Voir les sons recommandés"):
     switch_page("Similarité")
 
 # Charger les données JSON
