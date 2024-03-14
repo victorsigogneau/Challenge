@@ -255,7 +255,7 @@ def load_chatbot():
 chatbot = load_chatbot()
 
 st.title("🎶 Quels sont vos goûts musicaux ?")
-st.caption("❓ Vous ne savez pas quoi écouté ? Demandez à notre chatbot ! 🤖")
+st.caption("❓ Vous ne savez pas quoi écouter ? Demandez à notre chatbot ! 🤖")
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "Quels sont vos artistes préférés ?"}]
